@@ -14,7 +14,8 @@
   width: 300px;
 }
 
-.start-screen_x-y {
+.start-screen_x-y,
+.start-screen_x-y_legend {
   display: flex;
   justify-content: space-around;
 }
@@ -22,10 +23,9 @@
 .start-screen_x-y > span {
   width: 150px;
   line-height: 50px;
-  font-size: 3em;
+  font-size: 5em;
 }
 
-.start-screen_x-y_legend {
-  display: flex;
-  justify-content: space-around;
+.start-screen_x-y_legend > span {
+  width: 150px;
 }

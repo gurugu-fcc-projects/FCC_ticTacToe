@@ -9,7 +9,7 @@ class App extends Component {
           <h1>CHOOSE SIDE</h1>
           <div className="start-screen_x-y">
             <span><i className="fa fa-remove"></i></span>
-            <span><i className="fa fa-circle-thin"></i></span>
+            <span><i className="fa fa-circle-o"></i></span>
           </div>
           <div className="start-screen_x-y_legend">
             <span>:first</span><span>:second</span>
