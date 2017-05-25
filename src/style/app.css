@@ -4,4 +4,6 @@
   justify-content: center;
   vertical-align: middle;
   margin: auto;
+  background-color: grey;
+  height: 100vh;
 }
