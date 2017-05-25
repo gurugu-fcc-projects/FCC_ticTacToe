@@ -7,10 +7,11 @@ class App extends Component {
       <div className="app">
         <div className="start-screen">
           <h1>CHOOSE SIDE</h1>
-          <div>
-            <span>X</span><span>O</span>
+          <div className="start-screen_x-y">
+            <span><i className="fa fa-remove"></i></span>
+            <span><i className="fa fa-circle-thin"></i></span>
           </div>
-          <div>
+          <div className="start-screen_x-y_legend">
             <span>:first</span><span>:second</span>
           </div>
         </div>
