@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../style/start.css';
 
 const Start = () => (
-  <div className="app">
+  <div className="outer-shell">
     <div className="start-screen">
       <h1>CHOOSE SIDE</h1>
       <div className="start-screen_selection">

@@ -1,0 +1,18 @@
+.game-screen {
+  display: flex;
+}
+
+.game-screen-board {
+  width: 300px; height: 300px;
+  margin: 0 20px;
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.game-screen-score-title {
+  margin-bottom: 10px;
+}
+
+.game-screen-score-player {
+  text-align: right;
+}

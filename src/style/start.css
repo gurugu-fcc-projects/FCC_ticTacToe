@@ -1,11 +1,3 @@
-.app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .start-screen {
   text-align: center;
   width: 300px;
