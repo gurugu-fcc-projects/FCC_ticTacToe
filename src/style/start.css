@@ -3,15 +3,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*vertical-align: middle;*/
-  /*margin: auto;*/
-  /*background-color: grey;*/
   height: 100vh;
 }
 
 .start-screen {
   text-align: center;
   width: 300px;
+}
+
+.start-screen h1 {
+  margin-top: 0;
 }
 
 .start-screen_selection,
