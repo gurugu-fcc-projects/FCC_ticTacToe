@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../style/app.css';
+import '../style/start.css';
 
-const App = () => (
+const Start = () => (
   <div className="app">
     <div className="start-screen">
       <h1>CHOOSE SIDE</h1>
@@ -14,6 +14,6 @@ const App = () => (
       </div>
     </div>
   </div>
-)
+);
 
-export default App;
+export default Start;
