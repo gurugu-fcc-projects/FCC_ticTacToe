@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Game = () => {
+const Game = () => (
   <div>
     <div>Game!</div>
   </div>
-};
+);
 
 export default Game;

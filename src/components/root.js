@@ -9,11 +9,11 @@ import End from './end';
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
-      <Route path='/' component={Start}>
-        <Route path='/start' component={Start} />
+      <div>
+        <Route exact path='/' component={Start} />
         <Route path='/game' component={Game} />
         <Route path='/end' component={End} />
-      </Route>
+      </div>
     </Router>
   </Provider>
 );

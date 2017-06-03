@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../style/start.css';
 
 const Start = () => (
@@ -6,8 +7,8 @@ const Start = () => (
     <div className="start-screen">
       <h1>CHOOSE SIDE</h1>
       <div className="start-screen_selection">
-        <span className="start-screen_selection_x">X</span>
-        <span className="start-screen_selection_y">O</span>
+        <Link to='/game' className="start-screen_selection_x">X</Link>
+        <Link to='/game' className="start-screen_selection_y">O</Link>
       </div>
       <div className="start-screen_selection_legend">
         <span>:first</span><span>:second</span>

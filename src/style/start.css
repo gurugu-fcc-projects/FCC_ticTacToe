@@ -20,18 +20,15 @@
   justify-content: space-around;
 }
 
-.start-screen_selection > span {
-  width: 150px;
-  /*line-height: 50px;*/
-  font-size: 6em;
-}
-
 .start-screen_selection_x,
 .start-screen_selection_y {
+  width: 150px;
+  font-size: 6em;
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
 }
 
 .start-screen_selection_legend > span {
   width: 150px;
-  cursor: pointer;
 }

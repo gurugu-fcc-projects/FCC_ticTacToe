@@ -1,9 +1,9 @@
 import React from 'react';
 
-const End = () => {
+const End = () => (
   <div>
     <div>End!</div>
   </div>
-};
+);
 
 export default End;
