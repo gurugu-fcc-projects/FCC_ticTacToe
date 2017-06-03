@@ -26,11 +26,12 @@
   font-size: 6em;
 }
 
-/*.start-screen_selection_x,
+.start-screen_selection_x,
 .start-screen_selection_y {
-  width: 80px; height: 80px;
-}*/
+  cursor: pointer;
+}
 
 .start-screen_selection_legend > span {
   width: 150px;
+  cursor: pointer;
 }
