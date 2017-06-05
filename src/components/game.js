@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 import Board from './board';
+import { crossLine } from '../utils/crossline';
 import '../style/game.css';
 
 class Game extends Component{
+  componentDidMount() {
+    crossLine(1);
+  }
+
   render() {
     return (
       <div className="outer-shell">
