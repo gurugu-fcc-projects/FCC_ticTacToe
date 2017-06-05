@@ -7,7 +7,8 @@ const Board = () => {
 
   return (
     <div className="game-screen-board">
-      { boardData.map((cell, index) => <div key={index}>{cell}</div>) }
+      { boardData.map((cell, index) =>
+        <div key={index}>{cell === 0 ? '' : cell}</div>) }
     </div>
   );
 };
