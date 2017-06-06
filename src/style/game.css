@@ -1,12 +1,17 @@
-.game-screen {
+.game {
   display: flex;
 }
 
-.game-screen-score-title {
+.game-score-title {
   margin-top: 25px;
   margin-bottom: 10px;
 }
 
-.game-screen-score-player {
+.game-score-player {
   text-align: right;
+}
+
+.game-board {
+  margin: 0 30px;
+  background-color: lightgrey;
 }
