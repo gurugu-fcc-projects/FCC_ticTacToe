@@ -1,29 +1,12 @@
 import React, { Component } from 'react';
 
 // import Board from './board';
-import { chooseCrossLine } from '../utils/crossline';
+import { drawBoard, chooseCrossLine, chooseCell } from '../utils/drawing';
 import '../style/game.css';
-
-const setupBoard = () => {
-  const canvas = document.querySelector('.game-board');
-  const cx = canvas.getContext('2d');
-
-  //=== draw a board
-  cx.beginPath();
-  cx.moveTo(100, 0);
-  cx.lineTo(100, 300);
-  cx.moveTo(200, 0);
-  cx.lineTo(200, 300);
-  cx.moveTo(0, 100);
-  cx.lineTo(300, 100);
-  cx.moveTo(0, 200);
-  cx.lineTo(300, 200);
-  cx.stroke();
-}
 
 class Game extends Component{
   componentDidMount() {
-    setupBoard();
+    drawBoard();
     chooseCrossLine(7);
     // crossLine(1);
   }
