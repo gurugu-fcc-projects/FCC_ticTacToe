@@ -83,8 +83,23 @@ const findRow = (coordinates) => {
   }
 };
 
+const findColumn = (coordinates) => {
+  switch (coordinates) {
+    case coordinates.x < 100:
+      return 1;
+    case coordinates.x < 200:
+      return 2;
+    case coordinates.x > 200:
+      return 3;
+    default:
+      return 1;
+  }
+};
+
 export const chooseCell = (evt) => {
   const coordinates = getCoordinatesOnBoard(evt);
   const row = findRow(coordinates);
+  const column = findColumn(coordinates);
+  
   console.log(coordinates);
 };
