@@ -7,8 +7,6 @@ import '../style/game.css';
 class Game extends Component{
   componentDidMount() {
     drawBoard();
-    chooseCrossLine(7);
-    // crossLine(1);
   }
 
   render() {
@@ -20,7 +18,7 @@ class Game extends Component{
             <div className="game-score-player">0</div>
           </div>
           <canvas
-            onClick={chooseCell} 
+            onClick={chooseCell}
             className="game-board"
             height="300px"
             width="300px"></canvas>
