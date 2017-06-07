@@ -71,26 +71,33 @@ const getCoordinatesOnBoard = (evt) => {
 };
 
 const findRow = (coordinates) => {
-  switch (coordinates) {
-    case coordinates.y < 100:
-      return 1;
-    case coordinates.y < 200:
-      return 2;
-    case coordinates.y > 200:
-      return 3;
-    default:
-      return 1;
+  if (coordinates.y < 100) {
+    return 1;
+  } else if (coordinates.y < 200) {
+    return 2;
+  } else {
+    return 3;
   }
 };
 
 const findColumn = (coordinates) => {
-  switch (coordinates) {
-    case coordinates.x < 100:
-      return 1;
-    case coordinates.x < 200:
-      return 2;
-    case coordinates.x > 200:
-      return 3;
+  if (coordinates.x < 100) {
+    return 1;
+  } else if (coordinates.x < 200) {
+    return 2;
+  } else {
+    return 3;
+  }
+};
+
+const findCell = (row, column) => {
+  switch (row) {
+    case 1:
+      return column;
+    case 2:
+      return column + 3;
+    case 3:
+      return column + 6;
     default:
       return 1;
   }
@@ -100,6 +107,7 @@ export const chooseCell = (evt) => {
   const coordinates = getCoordinatesOnBoard(evt);
   const row = findRow(coordinates);
   const column = findColumn(coordinates);
-  
-  console.log(coordinates);
+  const cell = findCell(row, column);
+
+  console.log(cell);
 };
