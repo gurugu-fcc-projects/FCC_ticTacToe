@@ -60,7 +60,7 @@ export const chooseCrossLine = (winningLine) => {
   }
 };
 
-const getCoordinatesOnBoard = (evt) => {
+const getCoordinates = (evt) => {
   const canvas = document.querySelector('.game-board');
   const rect = canvas.getBoundingClientRect();
 
@@ -103,11 +103,36 @@ const findCell = (row, column) => {
   }
 };
 
+const findCellCenter = (cell) => {
+  switch (cell) {
+    case 1:
+      return {x: 50, y: 50};
+    case 2:
+      return {x: 150, y: 50};
+    case 3:
+      return {x: 250, y: 50};
+    case 4:
+      return {x: 50, y: 150};
+    case 5:
+      return {x: 150, y: 150};
+    case 6:
+      return {x: 250, y: 150};
+    case 7:
+      return {x: 50, y: 250};
+    case 8:
+      return {x: 150, y: 250};
+    case 9:
+      return {x: 250, y: 250};
+    default:
+      return {x: 50, y: 50};
+  }
+};
+
 export const chooseCell = (evt) => {
-  const coordinates = getCoordinatesOnBoard(evt);
+  const coordinates = getCoordinates(evt);
   const row = findRow(coordinates);
   const column = findColumn(coordinates);
   const cell = findCell(row, column);
 
-  console.log(cell);
+  console.log(findCellCenter(cell));
 };
