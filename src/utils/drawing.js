@@ -28,6 +28,16 @@ const drawCross = (coordinates) => {
   cx.stroke();
 };
 
+const drawCircle = (coordinates) => {
+  const canvas = document.querySelector('.game-board');
+  const cx = canvas.getContext('2d');
+
+  const {x, y} = coordinates;
+  cx.beginPath();
+  cx.arc(x, y, 38, 0, 7);
+  cx.stroke();
+};
+
 const drawCrossLine = (coordinates) => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
@@ -148,5 +158,5 @@ export const chooseCell = (evt) => {
   const cell = findCell(row, column);
   const cellCenter = findCellCenter(cell);
 
-  drawCross(cellCenter);
+  drawCircle(cellCenter);
 };
