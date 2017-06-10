@@ -15,6 +15,19 @@ export const drawBoard = () => {
   cx.stroke();
 };
 
+const drawCross = (coordinates) => {
+  const canvas = document.querySelector('.game-board');
+  const cx = canvas.getContext('2d');
+
+  const {x, y} = coordinates;
+  cx.beginPath();
+  cx.moveTo(x-38, y-38);
+  cx.lineTo(x+38, y+38);
+  cx.moveTo(x+38, y-38);
+  cx.lineTo(x-38, y+38);
+  cx.stroke();
+};
+
 const drawCrossLine = (coordinates) => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
@@ -133,6 +146,7 @@ export const chooseCell = (evt) => {
   const row = findRow(coordinates);
   const column = findColumn(coordinates);
   const cell = findCell(row, column);
+  const cellCenter = findCellCenter(cell);
 
-  console.log(findCellCenter(cell));
+  drawCross(cellCenter);
 };
