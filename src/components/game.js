@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-// import Board from './board';
 import { drawBoard, chooseCrossLine, chooseCell } from '../utils/drawing';
 import '../style/game.css';
 

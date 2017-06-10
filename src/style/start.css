@@ -15,10 +15,10 @@
 
 .start-screen_selection_x,
 .start-screen_selection_y {
-  width: 150px;
+  /*width: 150px;
   font-size: 6em;
   text-decoration: none;
-  color: inherit;
+  color: inherit;*/
   cursor: pointer;
 }
 

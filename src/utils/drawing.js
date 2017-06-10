@@ -15,6 +15,24 @@ export const drawBoard = () => {
   cx.stroke();
 };
 
+export const drawSelectionButtons = (canvasName) => {
+  const canvasX = document.querySelector('.select-x').getContext('2d');
+  const canvasY = document.querySelector('.select-y').getContext('2d');
+
+  canvasX.lineWidth = 4;
+  canvasX.beginPath();
+  canvasX.moveTo(20, 20);
+  canvasX.lineTo(100, 100);
+  canvasX.moveTo(100, 20);
+  canvasX.lineTo(20, 100);
+  canvasX.stroke();
+
+  canvasY.lineWidth = 4;
+  canvasY.beginPath();
+  canvasY.arc(60, 60, 40, 0, 7);
+  canvasY.stroke();
+};
+
 const drawCross = (coordinates) => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
