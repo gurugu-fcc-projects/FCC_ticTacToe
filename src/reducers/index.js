@@ -1,21 +1,23 @@
+import { CHOOSE_SIDE } from '../actions/types';
+
 const INIT_STATE = {
   board: [0,0,0,0,0,0,0,0,0],
   game: {
     player: {
       side: 'X',
       score: 0,
-      isMoving: true
+      isMoving: true,
     },
     cpu: {
       side: 'O',
       score: 0,
-      isMoving: false
-    }
-  }
+      isMoving: false,
+    },
+  },
 };
 
 const tictactoe = (state = INIT_STATE, action) => {
   return state;
-}
+};
 
 export default tictactoe;

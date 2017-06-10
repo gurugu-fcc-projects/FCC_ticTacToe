@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { drawBoard, chooseCrossLine, chooseCell } from '../utils/drawing';
+import { drawBoard, chooseCell } from '../utils/drawing';
 import '../style/game.css';
 
 class Game extends Component{
