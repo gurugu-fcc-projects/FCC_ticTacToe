@@ -1,4 +1,6 @@
-import { CHOOSE_SIDE } from '../actions/types';
+import { combineReducers } from 'redux';
+
+import player from './player';
 
 const INIT_STATE = {
   board: [0,0,0,0,0,0,0,0,0],
@@ -16,8 +18,8 @@ const INIT_STATE = {
   },
 };
 
-const tictactoe = (state = INIT_STATE, action) => {
-  return state;
-};
+const rootReducer = combineReducers({
+  player,
+});
 
-export default tictactoe;
+export default rootReducer;

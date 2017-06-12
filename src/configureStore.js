@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 
-import tictactoe from './reducers/index';
+import rootReducer from './reducers/index';
 
 export const configureStore = () => {
   const middlewares = [];
@@ -11,7 +11,7 @@ export const configureStore = () => {
   }
 
   return createStore(
-    tictactoe,
+    rootReducer,
     applyMiddleware(...middlewares)
   );
 };
