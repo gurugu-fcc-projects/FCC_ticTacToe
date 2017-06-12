@@ -16,21 +16,23 @@ export const drawBoard = () => {
 };
 
 export const drawSelectionButtons = (canvasName) => {
-  const canvasX = document.querySelector('.select-x').getContext('2d');
-  const canvasY = document.querySelector('.select-y').getContext('2d');
+  const canvas = document.querySelector('.selection-canvas');
+  const cx = canvas.getContext('2d');
 
-  canvasX.lineWidth = 4;
-  canvasX.beginPath();
-  canvasX.moveTo(20, 20);
-  canvasX.lineTo(100, 100);
-  canvasX.moveTo(100, 20);
-  canvasX.lineTo(20, 100);
-  canvasX.stroke();
+  // draw X
+  cx.lineWidth = 4;
+  cx.beginPath();
+  cx.moveTo(5, 10);
+  cx.lineTo(85, 90);
+  cx.moveTo(85, 10);
+  cx.lineTo(5, 90);
+  cx.moveTo(5, 10);
+  cx.stroke();
 
-  canvasY.lineWidth = 4;
-  canvasY.beginPath();
-  canvasY.arc(60, 60, 40, 0, 7);
-  canvasY.stroke();
+  // draw O
+  cx.beginPath();
+  cx.arc(195, 50, 40, 0, 7);
+  cx.stroke();
 };
 
 const drawCross = (coordinates) => {
