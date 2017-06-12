@@ -20,9 +20,9 @@ class Start extends Component {
           <h1>CHOOSE SIDE</h1>
           <Link
             to="/game"
-            className="selection"
-            onClick={chooseSide}>
+            className="selection">
             <canvas
+              onClick={chooseSide}
               className="selection-canvas"
               height="120px"
               width="240px"></canvas>

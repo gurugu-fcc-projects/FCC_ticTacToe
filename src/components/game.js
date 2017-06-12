@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { drawBoard, chooseCell } from '../utils/drawing';
+import { drawBoard } from '../utils/drawing';
+import { chooseCell } from '../utils/finding';
 import '../style/game.css';
 
 class Game extends Component{
