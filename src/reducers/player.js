@@ -11,7 +11,8 @@ const player = (state = INIT_STATE, action) => {
     case CHOOSE_SIDE:
       return {
         ...state,
-        side: action.payload,
+        side: action.payload.side,
+        isMoving: action.payload.isMoving
       };
     default:
       return state;

@@ -3,7 +3,7 @@ import { CHOOSE_SIDE } from '../actions/types';
 const INIT_STATE = {
   side: 'o',
   score: 0,
-  isMoving: true,
+  isMoving: false,
 };
 
 const cpu = (state = INIT_STATE, action) => {
@@ -11,7 +11,8 @@ const cpu = (state = INIT_STATE, action) => {
     case CHOOSE_SIDE:
       return {
         ...state,
-        side: action.payload === 'x' ? 'x' : 'o',
+        side: action.payload.side === 'x' ? 'o' : 'x',
+        isMoving: action.payload.isMoving === true ? false : true,
       };
     default:
       return state;
