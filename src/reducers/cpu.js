@@ -1,7 +1,7 @@
 import { CHOOSE_SIDE } from '../actions/types';
 
 const INIT_STATE = {
-  side: 'x',
+  side: 'o',
   score: 0,
   isMoving: true,
 };

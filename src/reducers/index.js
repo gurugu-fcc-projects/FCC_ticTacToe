@@ -1,25 +1,11 @@
 import { combineReducers } from 'redux';
 
 import player from './player';
-
-const INIT_STATE = {
-  board: [0,0,0,0,0,0,0,0,0],
-  game: {
-    player: {
-      side: 'X',
-      score: 0,
-      isMoving: true,
-    },
-    cpu: {
-      side: 'O',
-      score: 0,
-      isMoving: false,
-    },
-  },
-};
+import cpu from './cpu';
 
 const rootReducer = combineReducers({
   player,
+  cpu,
 });
 
 export default rootReducer;
