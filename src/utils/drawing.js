@@ -78,7 +78,7 @@ export const drawCrossLine = (coordinates) => {
 };
 
 export const drawInCell = (cell, symbol) => {
-  symbol === 'x'
+  symbol === 1
     ? drawCross(findCellCenter(cell))
     : drawCircle(findCellCenter(cell));
 }

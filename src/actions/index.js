@@ -8,7 +8,7 @@ export const chooseSide = (evt) => {
     type: types.CHOOSE_SIDE,
     payload: {
       side: side,
-      isMoving: side === 'x' ? true : false,
+      isMoving: side === 1 ? true : false,
     },
   };
 };

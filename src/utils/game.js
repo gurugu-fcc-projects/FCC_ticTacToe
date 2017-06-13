@@ -15,6 +15,9 @@ export const checkForVictory = (board, symbol) => {
   });
 };
 
-export const calculateCpuMove = (board, playerSymbol) => {
+export const calculateCpuMove = (board, cpuSymbol) => {
+  for (let i = 0, len = board.length; i < len; i++) {
+
+  }
   return board;
 };
