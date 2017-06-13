@@ -1,14 +1,29 @@
-import { CHOOSE_SIDE } from './types';
+import * as types from './types';
 import * as fromFinding from '../utils/finding';
 
 export const chooseSide = (evt) => {
   const side = fromFinding.chooseSide(evt);
 
   return {
-    type: CHOOSE_SIDE,
+    type: types.CHOOSE_SIDE,
     payload: {
       side: side,
       isMoving: side === 'x' ? true : false,
     },
+  };
+};
+
+export const playerMove = (evt) => {
+  const cell = fromFinding.chooseCell(evt);
+
+  return {
+    type: types.PLAYER_MOVE,
+    payload: cell,
+  };
+};
+
+export const cpuMove = () => {
+  return {
+    type: types.CPU_MOVE,
   };
 };

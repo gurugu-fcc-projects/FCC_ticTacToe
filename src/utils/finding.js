@@ -77,7 +77,7 @@ const findCell = (row, column) => {
   }
 };
 
-const findCellCenter = (cell) => {
+export const findCellCenter = (cell) => {
   switch (cell) {
     case 1:
       return {x: 50, y: 50};
@@ -106,10 +106,8 @@ export const chooseCell = (evt) => {
   const coordinates = getCoordinates(evt, '.game-board');
   const row = findRow(coordinates);
   const column = findColumn(coordinates);
-  const cell = findCell(row, column);
-  const cellCenter = findCellCenter(cell);
 
-  fromDrawing.drawCircle(cellCenter);
+  return findCell(row, column);
 };
 
 export const chooseSide = (evt) => {

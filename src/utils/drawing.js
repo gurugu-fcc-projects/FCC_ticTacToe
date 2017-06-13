@@ -1,8 +1,12 @@
+import { findCellCenter } from './finding';
+
+/*=============================================
+Preparation Functions
+=============================================*/
 export const drawBoard = () => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
 
-  //=== draw board
   cx.beginPath();
   cx.moveTo(100, 0);
   cx.lineTo(100, 300);
@@ -35,7 +39,11 @@ export const drawSelectionButtons = (canvasName) => {
   cx.stroke();
 };
 
-export const drawCross = (coordinates) => {
+/*=============================================
+In-game drawing functions
+=============================================*/
+
+const drawCross = (coordinates) => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
   const {x, y} = coordinates;
@@ -48,7 +56,7 @@ export const drawCross = (coordinates) => {
   cx.stroke();
 };
 
-export const drawCircle = (coordinates) => {
+const drawCircle = (coordinates) => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
   const {x, y} = coordinates;
@@ -68,3 +76,9 @@ export const drawCrossLine = (coordinates) => {
   cx.lineTo(coordinates.end.x, coordinates.end.y);
   cx.stroke();
 };
+
+export const drawInCell = (cell, symbol) => {
+  symbol === 'x'
+    ? drawCross(findCellCenter(cell))
+    : drawCircle(findCellCenter(cell));
+}

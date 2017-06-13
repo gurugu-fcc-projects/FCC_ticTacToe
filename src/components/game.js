@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { drawBoard } from '../utils/drawing';
-import { chooseCell } from '../utils/finding';
+// import { chooseCell } from '../utils/finding';
+import * as actions from '../actions';
 import '../style/game.css';
 
 class Game extends Component{
@@ -9,7 +11,15 @@ class Game extends Component{
     drawBoard();
   }
 
+  componentDidUpdate() {
+    if (this.props.isMoving === 'cpu') {
+      this.props.cpuMove();
+    }
+  }
+
   render() {
+    const { playerMove } = this.props;
+
     return (
       <div className="outer-shell">
         <div className="game">
@@ -18,7 +28,7 @@ class Game extends Component{
             <div className="game-score-player">0</div>
           </div>
           <canvas
-            onClick={chooseCell}
+            onClick={playerMove}
             className="game-board"
             height="300px"
             width="300px"></canvas>
@@ -31,5 +41,16 @@ class Game extends Component{
     );
   }
 };
+
+const mapStateToProps = (state) => ({
+  isMoving: state.game.isMoving,
+  playerScore: state.player.score,
+  cpuScore: state.cpu.score,
+});
+
+Game = connect(
+  mapStateToProps,
+  actions
+)(Game);
 
 export default Game;
