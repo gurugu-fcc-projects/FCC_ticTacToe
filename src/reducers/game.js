@@ -1,11 +1,12 @@
 import { CHOOSE_SIDE, PLAYER_MOVE, CPU_MOVE } from '../actions/types';
 import { drawInCell } from '../utils/drawing';
-import { checkForVictory, calculateCpuMove } from '../utils/game';
+import { isWinning, findMoveRatings } from '../utils/game';
 
 const INIT_STATE = {
   board: [0, 0, 0, 0, 0, 0, 0, 0, 0,],
+  tmpBoard: [1, 2, 0, 0, 2, 1, 0, 0, 0,],
   isMoving: 'player',
-  playerSymbol: 1,
+  playerSymbol: 'x',
 };
 
 const game = (state = INIT_STATE, action) => {
@@ -13,8 +14,8 @@ const game = (state = INIT_STATE, action) => {
     case CHOOSE_SIDE:
       return {
         ...state,
-        playerCell: action.payload.side,
-        isMoving: action.payload.side === 1 ? 'player' : 'cpu',
+        isMoving: action.payload.side === 'x' ? 'player' : 'cpu',
+        playerSymbol: action.payload.side,
       };
     case PLAYER_MOVE:
       if (state.board[action.payload - 1] === 0) {
@@ -23,7 +24,7 @@ const game = (state = INIT_STATE, action) => {
           ...state.board.slice(action.payload)];
         drawInCell(action.payload, state.playerSymbol);
 
-        if (checkForVictory(newBoard, state.playerSymbol)) {
+        if (isWinning(newBoard, state.playerSymbol)) {
           console.log('player won!');
           return state;
         } else {
@@ -36,16 +37,19 @@ const game = (state = INIT_STATE, action) => {
       }
       return state;
     case CPU_MOVE:
-      const cpuSymbol = state.playerSymbol === 1 ? 2 : 1;
-      const newBoard = calculateCpuMove(state.board, cpuSymbol);
-
-      if (checkForVictory(newBoard, cpuSymbol)) {
+      const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x';
+      // console.log('player:', state.playerSymbol === 1 ? 'x' : 'o');
+      // console.log('cpu:', cpuSymbol === 1 ? 'x' : 'o');
+      // const moveRatings = findMoveRatings(state.board, cpuSymbol);
+      const moveRatings = findMoveRatings(state.tmpBoard, 'x');
+      console.log(moveRatings);
+      if (isWinning(state.board, cpuSymbol)) {
         console.log('cpu won!');
         return state;
       } else {
         return {
           ...state,
-          board: newBoard,
+          board: state.board,
           isMoving: 'player',
         };
       }

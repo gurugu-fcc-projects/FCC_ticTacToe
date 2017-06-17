@@ -113,5 +113,5 @@ export const chooseCell = (evt) => {
 export const chooseSide = (evt) => {
   const { x, } = getCoordinates(evt, '.selection-canvas');
 
-  return x < 120 ? 1 : 2;
+  return x < 120 ? 'x' : 'o';
 }

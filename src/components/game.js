@@ -44,8 +44,8 @@ class Game extends Component{
 
 const mapStateToProps = (state) => ({
   isMoving: state.game.isMoving,
-  playerScore: state.player.score,
-  cpuScore: state.cpu.score,
+  // playerScore: state.player.score,
+  // cpuScore: state.cpu.score,
 });
 
 Game = connect(
