@@ -4,7 +4,7 @@ import { isWinning, findMoveRatings } from '../utils/game';
 
 const INIT_STATE = {
   board: [0, 0, 0, 0, 0, 0, 0, 0, 0,],
-  tmpBoard: [1, 2, 0, 0, 2, 1, 0, 0, 0,],
+  tmpBoard: ['o', 0, 'x', 'x', 0, 0, 0, 'o', 0,],
   isMoving: 'player',
   playerSymbol: 'x',
 };
