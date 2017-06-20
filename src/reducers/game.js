@@ -4,7 +4,11 @@ import { isWinning, findMoveRatings } from '../utils/game';
 
 const INIT_STATE = {
   board: [0, 0, 0, 0, 0, 0, 0, 0, 0,],
-  tmpBoard: ['o', 0, 'x', 'x', 0, 0, 0, 'o', 0,],
+  tmpBoard: [
+    0, 0, 0,
+    0, 0, 0,
+    0, 0, 0,
+  ],
   isMoving: 'player',
   playerSymbol: 'x',
 };
@@ -22,6 +26,7 @@ const game = (state = INIT_STATE, action) => {
         const newBoard = [...state.board.slice(0, action.payload - 1),
           state.playerSymbol,
           ...state.board.slice(action.payload)];
+          
         drawInCell(action.payload, state.playerSymbol);
 
         if (isWinning(newBoard, state.playerSymbol)) {
