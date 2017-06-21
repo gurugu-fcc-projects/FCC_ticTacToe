@@ -1,4 +1,4 @@
-const winningCombinations = [
+export const winningCombinations = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
@@ -15,14 +15,15 @@ export const isWinning = (board, symbol) => {
   });
 };
 
-const makeMove = (board, cell, symbol) => {
+export const makeMove = (board, cell, symbol) => {
   return [...board.slice(0, cell), symbol, ...board.slice(cell + 1)];
 };
 
-const winningMove = (board, player) => {
+export const winningMove = (board, player) => {
   return board.some((cell, index) => {
     if (cell === 0) {
       const newBoard = makeMove(board, index, player);
+
       if (isWinning(newBoard, player)) {
         return true;
       } else {
@@ -34,7 +35,7 @@ const winningMove = (board, player) => {
   });
 }
 
-const calculateMoveRatings = (board, playerAi, playerCurrent) => {
+export const calculateMoveRatings = (board, playerAi, playerCurrent) => {
   const playerNext = playerCurrent === 'x' ? 'o' : 'x';
   // return if there are no free cells on a board
   if (board.indexOf(0) === -1) {
@@ -67,8 +68,34 @@ export const findMoveRatings = (board, playerAi) => {
         ? 100000
         : calculateMoveRatings(newBoard, playerAi, playerHuman);
     } else {
-      return cell;
+      return -10000;
     }
   });
-
 };
+
+export const findBestCell = (ratings) => {
+  let testRating = -10000;
+  console.log(ratings);
+  return ratings.reduce((best, rating, index) => {
+    if (rating > testRating) {
+      testRating = rating
+      return index;
+    } else if (rating === testRating) {
+      return Math.random > 0.5 ? index : best;
+    } else {
+      return best;
+    }
+  }, 0);
+};
+
+export const returnBestCell = (board, playerAi) => {
+  const moveRatings = findMoveRatings(board, playerAi);
+
+  return findBestCell(moveRatings);
+};
+// export const makeBestMove = (board, playerAi) => {
+//   const moveRatings = findMoveRatings(board, playerAi),
+//         bestCell = findBestCell(moveRatings);
+//
+//   return [...board.slice(0, bestCell), playerAi, ...board.slice(bestCell + 1)];
+// };
