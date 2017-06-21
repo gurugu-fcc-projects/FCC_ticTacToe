@@ -62,3 +62,18 @@ describe ('isWinning', () => {
     expect(fromGame.isWinning(winningBoard4, 'o')).toBeFalsy();
   });
 });
+
+describe('makeMove', () => {
+  it('returns board with X inserted in the specified board cell', () => {
+    const inputBoard = ['x', 'x','x', 0, 0, 0, 0, 0, 0];
+    const outputBoard = ['x', 'x','x', 0, 0, 'x', 0, 0, 0];
+
+    expect(fromGame.makeMove(inputBoard, 5, 'x')).toEqual(outputBoard);
+  });
+  it('returns board with O inserted in the specified board cell', () => {
+    const inputBoard = ['x', 'x','x', 0, 0, 0, 0, 0, 0];
+    const outputBoard = ['x', 'x','x', 0, 0, 0, 'o', 0, 0];
+
+    expect(fromGame.makeMove(inputBoard, 6, 'o')).toEqual(outputBoard);
+  });
+});
