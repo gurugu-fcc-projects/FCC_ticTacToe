@@ -26,12 +26,10 @@ export const winningMove = (board, player) => {
 
       if (isWinning(newBoard, player)) {
         return true;
-      } else {
-        return false;
       }
-    } else {
       return false;
     }
+    return false;
   });
 }
 
@@ -51,9 +49,8 @@ export const calculateMoveRatings = (board, playerAi, playerCurrent) => {
       const newBoard = makeMove(board, index, playerCurrent);
 
       return totalScore + calculateMoveRatings(newBoard, playerAi, playerNext);
-    } else {
-      return totalScore;
     }
+    return totalScore;
   }, 0);
 };
 
@@ -67,9 +64,8 @@ export const findMoveRatings = (board, playerAi) => {
       return isWinning(newBoard, playerAi)
         ? 100000
         : calculateMoveRatings(newBoard, playerAi, playerHuman);
-    } else {
-      return -10000;
     }
+    return -10000;
   });
 };
 
@@ -82,9 +78,8 @@ export const findBestCell = (ratings) => {
       return index;
     } else if (rating === testRating) {
       return Math.random > 0.5 ? index : best;
-    } else {
-      return best;
     }
+    return best;
   }, 0);
 };
 

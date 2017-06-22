@@ -51,7 +51,7 @@ describe ('isWinning', () => {
     expect(fromGame.isWinning(winningBoard8, 'o')).toBeTruthy();
   });
   it ('returns FALSE if there is no winning combination for O', () => {
-    const winningBoard1 = ['x', 'x','x', 0, 0, 0, 0, 0, 0];
+    const winningBoard1 = ['x', 'x', 'x', 0, 0, 0, 0, 0, 0];
     const winningBoard2 = [0, 0, 0, 'o', 'o', 0, 0, 0, 0];
     const winningBoard3 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     const winningBoard4 = ['o', 0, 0, 0, 0, 0, 0, 0, 'o'];
@@ -65,15 +65,49 @@ describe ('isWinning', () => {
 
 describe('makeMove', () => {
   it('returns board with X inserted in the specified board cell', () => {
-    const inputBoard = ['x', 'x','x', 0, 0, 0, 0, 0, 0];
-    const outputBoard = ['x', 'x','x', 0, 0, 'x', 0, 0, 0];
+    const inputBoard = ['x', 'x', 'x', 0, 0, 0, 0, 0, 0];
+    const outputBoard = ['x', 'x', 'x', 0, 0, 'x', 0, 0, 0];
 
     expect(fromGame.makeMove(inputBoard, 5, 'x')).toEqual(outputBoard);
   });
   it('returns board with O inserted in the specified board cell', () => {
-    const inputBoard = ['x', 'x','x', 0, 0, 0, 0, 0, 0];
-    const outputBoard = ['x', 'x','x', 0, 0, 0, 'o', 0, 0];
+    const inputBoard = ['x', 'x', 'x', 0, 0, 0, 0, 0, 0];
+    const outputBoard = ['x', 'x', 'x', 0, 0, 0, 'o', 0, 0];
 
     expect(fromGame.makeMove(inputBoard, 6, 'o')).toEqual(outputBoard);
+  });
+});
+
+describe('winningMove', () => {
+  it('returns TRUE if there is a winning move for X', () => {
+    const inputBoard1 = ['x', 'x', 0, 0, 0, 0, 0, 0, 0];
+    const inputBoard2 = ['x', 0, 'x', 0, 0, 0, 0, 0, 0];
+    const inputBoard3 = ['x', 0, 0, 'x', 0, 0, 0, 0, 0];
+    const inputBoard4 = ['x', 0, 0, 0, 0, 0, 'x', 0, 0];
+    const inputBoard5 = ['x', 0, 0, 0, 0, 0, 0, 0, 'x'];
+    const inputBoard6 = [0, 0, 'x', 0, 0, 0, 'x', 0, 0];
+
+    expect(fromGame.winningMove(inputBoard1, 'x')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard2, 'x')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard3, 'x')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard4, 'x')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard5, 'x')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard6, 'x')).toBeTruthy();
+  });
+
+  it('returns TRUE if there is a winning move for O', () => {
+    const inputBoard1 = ['o', 'o', 0, 0, 0, 0, 0, 0, 0];
+    const inputBoard2 = ['o', 0, 'o', 0, 0, 0, 0, 0, 0];
+    const inputBoard3 = ['o', 0, 0, 'o', 0, 0, 0, 0, 0];
+    const inputBoard4 = ['o', 0, 0, 0, 0, 0, 'o', 0, 0];
+    const inputBoard5 = ['o', 0, 0, 0, 0, 0, 0, 0, 'o'];
+    const inputBoard6 = [0, 0, 'o', 0, 0, 0, 'o', 0, 0];
+
+    expect(fromGame.winningMove(inputBoard1, 'o')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard2, 'o')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard3, 'o')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard4, 'o')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard5, 'o')).toBeTruthy();
+    expect(fromGame.winningMove(inputBoard6, 'o')).toBeTruthy();
   });
 });
