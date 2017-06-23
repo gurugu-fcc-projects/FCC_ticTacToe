@@ -111,3 +111,29 @@ describe('winningMove', () => {
     expect(fromGame.winningMove(inputBoard6, 'o')).toBeTruthy();
   });
 });
+
+describe('calculateMoveRatings', () => {
+  it('returns 0 if there are no empty cells', () => {
+    const inputBoard = ['o', 'o', 'x', 'o', 'x', 'o', 'x', 'x', 'x'];
+
+    expect(fromGame.calculateMoveRatings(inputBoard, 'x', 'x')).toEqual(0);
+  });
+
+  it('returns 10 if there is one empty cell that allows player to win', () => {
+    const inputBoard = ['o', 'o', 'x', 'o', 'x', 'o', 'x', 0, 'x'];
+
+    expect(fromGame.calculateMoveRatings(inputBoard, 'x', 'x')).toEqual(10);
+  });
+
+  it('returns -10 if there are two moves & one of them allows opponent to win', () => {
+    const inputBoard = ['x', 'o', 0, 'o', 'o', 0, 'x', 'x', 'o'];
+
+    expect(fromGame.calculateMoveRatings(inputBoard, 'x', 'x')).toEqual(-10);
+  });
+
+  it('returns -20 if there are two moves that allow opponent to win', () => {
+    const inputBoard = ['x', 'o', 'o', 'o', 'o', 0, 0, 'x', 'o'];
+
+    expect(fromGame.calculateMoveRatings(inputBoard, 'x', 'x')).toEqual(-20);
+  });
+});
