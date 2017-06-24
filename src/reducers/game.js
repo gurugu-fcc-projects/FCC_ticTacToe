@@ -1,10 +1,8 @@
 import { CHOOSE_SIDE, PLAYER_MOVE, CPU_MOVE } from '../actions/types';
-import { drawInCell } from '../utils/drawing';
-import { drawWinningLine } from '../utils/finding';
+import { drawInCell, drawWin } from '../utils/drawing';
 import {
   isWinning,
   returnBestCell,
-  whichCombination,
 } from '../utils/game';
 
 const INIT_STATE = {
@@ -37,8 +35,7 @@ const game = (state = INIT_STATE, action) => {
         drawInCell(action.payload, state.playerSymbol);
 
         if (isWinning(newBoard, state.playerSymbol)) {
-          const combination = whichCombination(newBoard, state.playerSymbol);
-          drawWinningLine(combination);
+          drawWin(newBoard, state.playerSymbol);
           console.log('player won!');
           return state;
         } else {
@@ -61,8 +58,7 @@ const game = (state = INIT_STATE, action) => {
       drawInCell(bestCell, cpuSymbol);
 
       if (isWinning(newBoard, cpuSymbol)) {
-        const combination = whichCombination(newBoard, cpuSymbol);
-        drawWinningLine(combination);
+        drawWin(newBoard, cpuSymbol);
         console.log('cpu won!');
         return state;
       } else {
