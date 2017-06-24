@@ -165,3 +165,16 @@ describe('findBestCell', () => {
     expect(fromGame.findBestCell(inputRatings3)).toEqual(0);
   });
 });
+
+describe('returnBestCell', () => {
+  it('returns the best cell given current board', () => {
+    const inputBoard1 = ['x', 0, 'x', 'o', 'o', 0, 'o', 'x', 0];
+    const inputBoard2 = ['o', 0, 'o', 'x', 0, 0, 0, 'x', 0];
+    const inputBoard3 = ['o', 'x', 'o', 0, 0, 0, 0, 'x', 0];
+
+
+    expect(fromGame.returnBestCell(inputBoard1, 'x')).toEqual(1);
+    expect(fromGame.returnBestCell(inputBoard2, 'x')).toEqual(1);
+    expect(fromGame.returnBestCell(inputBoard3, 'x')).toEqual(4);
+  });
+});
