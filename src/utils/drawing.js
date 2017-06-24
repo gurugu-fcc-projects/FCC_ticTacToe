@@ -1,5 +1,5 @@
 import { findCellCenter } from './finding';
-import { whichCombination } from './game';
+import { whichCombination, winningCells } from './game';
 
 /*=============================================
 Preparation Functions
@@ -44,11 +44,12 @@ export const drawSelectionButtons = (canvasName) => {
 In-game drawing functions
 =============================================*/
 
-const drawCross = (coordinates) => {
+const drawCross = (coordinates, color = 'black') => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
   const {x, y} = coordinates;
 
+  cx.strokeStyle = color;
   cx.beginPath();
   cx.moveTo(x-38, y-38);
   cx.lineTo(x+38, y+38);
@@ -57,17 +58,18 @@ const drawCross = (coordinates) => {
   cx.stroke();
 };
 
-const drawCircle = (coordinates) => {
+const drawCircle = (coordinates, color = 'black') => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
   const {x, y} = coordinates;
 
+  cx.strokeStyle = color;
   cx.beginPath();
   cx.arc(x, y, 38, 0, 7);
   cx.stroke();
 };
 
-export const drawCrossLine = (coordinates) => {
+const drawCrossLine = (coordinates) => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
 
@@ -78,13 +80,13 @@ export const drawCrossLine = (coordinates) => {
   cx.stroke();
 };
 
-export const drawInCell = (cell, symbol) => {
+export const drawInCell = (cell, symbol, color) => {
   symbol === 'x'
-    ? drawCross(findCellCenter(cell))
-    : drawCircle(findCellCenter(cell));
+    ? drawCross(findCellCenter(cell), color)
+    : drawCircle(findCellCenter(cell), color);
 }
 
-export const drawWinningLine = (winningLine) => {
+const drawWinningLine = (winningLine) => {
   const coordinates = [
     { start: {x:0,   y:50},  end: {x:300, y:50} },
     { start: {x:0,   y:150}, end: {x:300, y:150} },
@@ -121,4 +123,12 @@ export const drawWinningLine = (winningLine) => {
 export const drawWin = (board, player) => {
   const combination = whichCombination(board, player);
   drawWinningLine(combination);
+};
+
+export const drawWinCells = (board, player) => {
+  const cells = winningCells(board, player);
+
+  cells.forEach(cell => {
+    drawInCell(cell, player, 'red');
+  });
 };

@@ -1,5 +1,5 @@
 import { CHOOSE_SIDE, PLAYER_MOVE, CPU_MOVE } from '../actions/types';
-import { drawInCell, drawWin } from '../utils/drawing';
+import { drawInCell, drawWin, drawWinCells } from '../utils/drawing';
 import {
   isWinning,
   returnBestCell,
@@ -58,7 +58,8 @@ const game = (state = INIT_STATE, action) => {
       drawInCell(bestCell, cpuSymbol);
 
       if (isWinning(newBoard, cpuSymbol)) {
-        drawWin(newBoard, cpuSymbol);
+        // drawWin(newBoard, cpuSymbol);
+        drawWinCells(newBoard, cpuSymbol);
         console.log('cpu won!');
         return state;
       } else {
