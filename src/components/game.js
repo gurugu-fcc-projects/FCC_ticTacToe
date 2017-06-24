@@ -9,6 +9,9 @@ import '../style/game.css';
 class Game extends Component{
   componentDidMount() {
     drawBoard();
+    if (this.props.isMoving === 'cpu') {
+      this.props.cpuMove();
+    }
   }
 
   componentDidUpdate() {

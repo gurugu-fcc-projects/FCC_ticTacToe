@@ -21,7 +21,7 @@ const game = (state = INIT_STATE, action) => {
     case CHOOSE_SIDE:
       return {
         ...state,
-        isMoving: action.payload.side === 'x' ? 'player' : 'cpu',
+        isMoving: action.payload.isMoving ? 'player' : 'cpu',
         playerSymbol: action.payload.side,
       };
     case PLAYER_MOVE:
