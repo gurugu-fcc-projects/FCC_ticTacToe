@@ -15,6 +15,14 @@ export const isWinning = (board, symbol) => {
   });
 };
 
+export const whichCombination = (board, symbol) => {
+  return winningCombinations.reduce((winningCombination, combination, index) => {
+    return combination.every(cell => board[cell - 1] !== symbol ? false : true)
+      ? index
+      : winningCombination;
+  }, null);
+};
+
 export const makeMove = (board, cell, symbol) => {
   return [...board.slice(0, cell), symbol, ...board.slice(cell + 1)];
 };
