@@ -200,3 +200,25 @@ describe('whichCombination', () => {
     expect(fromGame.whichCombination(winningBoard8, 'x')).toEqual(7);
   });
 });
+
+describe('winningCells', () => {
+  it('returns numbers of winning cells', () => {
+    const winningBoard1 = ['x', 'x', 'x', 0, 0, 0, 0, 0, 0];
+    const winningBoard2 = [0, 0, 0, 'x', 'x', 'x', 0, 0, 0];
+    const winningBoard3 = [0, 0, 0, 0, 0, 0, 'x', 'x', 'x'];
+    const winningBoard4 = ['x', 0, 0, 'x', 0, 0, 'x', 0, 0];
+    const winningBoard5 = [0, 'x', 0, 0, 'x', 0, 0, 'x', 0];
+    const winningBoard6 = [0, 0, 'x', 0, 0, 'x', 0, 0, 'x'];
+    const winningBoard7 = ['x', 0, 0, 0, 'x', 0, 0, 0, 'x'];
+    const winningBoard8 = [0, 0, 'x', 0,'x', 0, 'x', 0, 0];
+
+    expect(fromGame.winningCells(winningBoard1, 'x')).toEqual([1, 2, 3]);
+    expect(fromGame.winningCells(winningBoard2, 'x')).toEqual([4, 5, 6]);
+    expect(fromGame.winningCells(winningBoard3, 'x')).toEqual([7, 8, 9]);
+    expect(fromGame.winningCells(winningBoard4, 'x')).toEqual([1, 4, 7]);
+    expect(fromGame.winningCells(winningBoard5, 'x')).toEqual([2, 5, 8]);
+    expect(fromGame.winningCells(winningBoard6, 'x')).toEqual([3, 6, 9]);
+    expect(fromGame.winningCells(winningBoard7, 'x')).toEqual([1, 5, 9]);
+    expect(fromGame.winningCells(winningBoard8, 'x')).toEqual([3, 5, 7]);
+  });
+});

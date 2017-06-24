@@ -1,6 +1,6 @@
 import * as fromDrawing from './drawing';
 
-export const chooseCrossLine = (winningLine) => {
+export const drawWinningLine = (winningLine) => {
   const coordinates = [
     { start: {x:0,   y:50},  end: {x:300, y:50} },
     { start: {x:0,   y:150}, end: {x:300, y:150} },
