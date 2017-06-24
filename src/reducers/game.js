@@ -55,9 +55,6 @@ const game = (state = INIT_STATE, action) => {
 
       drawInCell(bestCell + 1, cpuSymbol);
 
-      console.log(state.board);
-      console.log(bestCell);
-
       if (isWinning(newBoard, cpuSymbol)) {
         console.log('cpu won!');
         return state;

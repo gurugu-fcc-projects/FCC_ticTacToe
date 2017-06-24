@@ -75,12 +75,12 @@ export const findBestCell = (ratings) => {
   return ratings.reduce((best, rating, index) => {
     if (rating > testRating) {
       testRating = rating
-      return index;
+      return index + 1;
     } else if (rating === testRating) {
-      return Math.random > 0.5 ? index : best;
+      return Math.random > 0.5 ? index + 1 : best;
     }
     return best;
-  }, 0);
+  }, 1);
 };
 
 export const returnBestCell = (board, playerAi) => {
@@ -88,9 +88,3 @@ export const returnBestCell = (board, playerAi) => {
 
   return findBestCell(moveRatings);
 };
-// export const makeBestMove = (board, playerAi) => {
-//   const moveRatings = findMoveRatings(board, playerAi),
-//         bestCell = findBestCell(moveRatings);
-//
-//   return [...board.slice(0, bestCell), playerAi, ...board.slice(bestCell + 1)];
-// };

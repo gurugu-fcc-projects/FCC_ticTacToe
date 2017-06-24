@@ -160,9 +160,9 @@ describe('findBestCell', () => {
     const inputRatings2 = [-10, -20, 0, -1000, -40, -100, -30, -10000, -150];
     const inputRatings3 = [-10, -20, -90, -1000, -40, -100, -30, -10000, -150];
 
-    expect(fromGame.findBestCell(inputRatings1)).toEqual(8);
-    expect(fromGame.findBestCell(inputRatings2)).toEqual(2);
-    expect(fromGame.findBestCell(inputRatings3)).toEqual(0);
+    expect(fromGame.findBestCell(inputRatings1)).toEqual(9);
+    expect(fromGame.findBestCell(inputRatings2)).toEqual(3);
+    expect(fromGame.findBestCell(inputRatings3)).toEqual(1);
   });
 });
 
@@ -173,8 +173,8 @@ describe('returnBestCell', () => {
     const inputBoard3 = ['o', 'x', 'o', 0, 0, 0, 0, 'x', 0];
 
 
-    expect(fromGame.returnBestCell(inputBoard1, 'x')).toEqual(1);
-    expect(fromGame.returnBestCell(inputBoard2, 'x')).toEqual(1);
-    expect(fromGame.returnBestCell(inputBoard3, 'x')).toEqual(4);
+    expect(fromGame.returnBestCell(inputBoard1, 'x')).toEqual(2);
+    expect(fromGame.returnBestCell(inputBoard2, 'x')).toEqual(2);
+    expect(fromGame.returnBestCell(inputBoard3, 'x')).toEqual(5);
   });
 });
