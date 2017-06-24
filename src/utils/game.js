@@ -62,7 +62,7 @@ export const findMoveRatings = (board, playerAi) => {
       const newBoard = makeMove(board, index, playerAi);
 
       return isWinning(newBoard, playerAi)
-        ? 100000
+        ? 10000
         : calculateMoveRatings(newBoard, playerAi, playerHuman);
     }
     return -10000;
@@ -71,7 +71,7 @@ export const findMoveRatings = (board, playerAi) => {
 
 export const findBestCell = (ratings) => {
   let testRating = -10000;
-  console.log(ratings);
+
   return ratings.reduce((best, rating, index) => {
     if (rating > testRating) {
       testRating = rating

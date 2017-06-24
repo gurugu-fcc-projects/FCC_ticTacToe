@@ -137,3 +137,31 @@ describe('calculateMoveRatings', () => {
     expect(fromGame.calculateMoveRatings(inputBoard, 'x', 'x')).toEqual(-20);
   });
 });
+
+describe('findMoveRatings', () => {
+  it('returns -10000 for all taken cells', () => {
+    const inputBoard = ['x', 'o', 'o', 'o', 'o', 'x', 'x', 'x', 'o'];
+    const outputBoard = [-10000, -10000, -10000, -10000, -10000, -10000, -10000, -10000, -10000];
+
+    expect(fromGame.findMoveRatings(inputBoard, 'x')).toEqual(outputBoard);
+  });
+
+  it('returns 10000 for all empty cells that will bring victory', () => {
+    const inputBoard = ['x', 'x', 0, 0, 'o', 'x', 'x', 'x', 0];
+    const outputBoard = [-10000, -10000, 10000, 10000, -10000, -10000, -10000, -10000, 10000];
+
+    expect(fromGame.findMoveRatings(inputBoard, 'x')).toEqual(outputBoard);
+  });
+});
+
+describe('findBestCell', () => {
+  it('returns index of a cell with the highest rating', () => {
+    const inputRatings1 = [10, 20, 0, 0, -40, 100, 30, -10000, 150];
+    const inputRatings2 = [-10, -20, 0, -1000, -40, -100, -30, -10000, -150];
+    const inputRatings3 = [-10, -20, -90, -1000, -40, -100, -30, -10000, -150];
+
+    expect(fromGame.findBestCell(inputRatings1)).toEqual(8);
+    expect(fromGame.findBestCell(inputRatings2)).toEqual(2);
+    expect(fromGame.findBestCell(inputRatings3)).toEqual(0);
+  });
+});
