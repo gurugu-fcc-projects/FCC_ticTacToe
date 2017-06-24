@@ -22,7 +22,6 @@ const game = (state = INIT_STATE, action) => {
         playerSymbol: action.payload.side,
       };
     case PLAYER_MOVE:
-      console.log('player moves!');
       if (state.board[action.payload - 1] === 0) {
         const newBoard = [
           ...state.board.slice(0, action.payload - 1),
@@ -45,15 +44,14 @@ const game = (state = INIT_STATE, action) => {
       }
       return state;
     case CPU_MOVE:
-      console.log('cpu moves!');
       const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x',
             bestCell = returnBestCell(state.board, cpuSymbol),
             newBoard = [
               ...state.board.slice(0, bestCell - 1),
               cpuSymbol,
-              ...state.board.slice(bestCell)];;
+              ...state.board.slice(bestCell)];
 
-      drawInCell(bestCell + 1, cpuSymbol);
+      drawInCell(bestCell, cpuSymbol);
 
       if (isWinning(newBoard, cpuSymbol)) {
         console.log('cpu won!');

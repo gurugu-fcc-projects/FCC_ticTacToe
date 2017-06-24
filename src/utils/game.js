@@ -63,7 +63,9 @@ export const findMoveRatings = (board, playerAi) => {
 
       return isWinning(newBoard, playerAi)
         ? 10000
-        : calculateMoveRatings(newBoard, playerAi, playerHuman);
+        : winningMove(newBoard, playerHuman)
+          ? -10000
+          : calculateMoveRatings(newBoard, playerAi, playerHuman);
     }
     return -10000;
   });
