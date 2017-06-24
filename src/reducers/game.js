@@ -36,7 +36,6 @@ const game = (state = INIT_STATE, action) => {
 
         if (isWinning(newBoard, state.playerSymbol)) {
           drawWinCells(newBoard, state.playerSymbol);
-          console.log('player won!');
           return state;
         } else {
           return {
@@ -55,11 +54,14 @@ const game = (state = INIT_STATE, action) => {
               cpuSymbol,
               ...state.board.slice(bestCell)];
 
-      drawInCell(bestCell, cpuSymbol);
+      if (action.payload) {
+        drawInCell(Math.floor(Math.random() * (10 - 1)) + 1, cpuSymbol);
+      } else {
+        drawInCell(bestCell, cpuSymbol);
+      }
 
       if (isWinning(newBoard, cpuSymbol)) {
         drawWinCells(newBoard, cpuSymbol);
-        console.log('cpu won!');
         return state;
       } else {
         return {

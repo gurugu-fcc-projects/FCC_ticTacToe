@@ -22,8 +22,9 @@ export const playerMove = (evt) => {
   };
 };
 
-export const cpuMove = () => {
+export const cpuMove = (firstMove) => {
   return {
     type: types.CPU_MOVE,
+    payload: firstMove,
   };
 };
