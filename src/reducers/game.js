@@ -37,7 +37,7 @@ const game = (state = INIT_STATE, action) => {
           return {
               ...state,
               isMoving: '',
-              winLoss: 'won',
+              winLoss: 'win',
           };
         } else {
           return {
@@ -67,7 +67,7 @@ const game = (state = INIT_STATE, action) => {
             ...state,
             board: newBoard,
             isMoving: '',
-            winLoss: 'lost',
+            winLoss: 'loss',
         };
       } else {
         return {

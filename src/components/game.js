@@ -60,8 +60,6 @@ const mapStateToProps = (state) => ({
   isMoving: state.game.isMoving,
   winLoss: state.game.winLoss,
   gameOn: state.game.gameOn,
-  // playerScore: state.player.score,
-  // cpuScore: state.cpu.score,
 });
 
 Game = connect(
