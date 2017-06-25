@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {  Redirect } from 'react-router-dom';
 
 import { drawBoard } from '../utils/drawing';
-// import { chooseCell } from '../utils/finding';
 import * as actions from '../actions';
 import '../style/game.css';
 
 class Game extends Component{
+
   componentDidMount() {
     drawBoard();
     if (this.props.isMoving === 'cpu') {
@@ -18,10 +19,19 @@ class Game extends Component{
     if (this.props.isMoving === 'cpu') {
       this.props.cpuMove(false);
     }
+    if (this.props.winLoss !== 'none') {
+      setTimeout(() => {
+        console.log('BOOM!');
+      }, 2000);
+    }
   }
 
   render() {
-    const { playerMove } = this.props;
+    const { playerMove, gameState } = this.props;
+
+    if (gameState !== 'playing') {
+      return <Redirect to='/end' />
+    }
 
     return (
       <div className="outer-shell">
@@ -47,6 +57,8 @@ class Game extends Component{
 
 const mapStateToProps = (state) => ({
   isMoving: state.game.isMoving,
+  winLoss: state.game.winLoss,
+  gameState: state.game.gameState,
   // playerScore: state.player.score,
   // cpuScore: state.cpu.score,
 });

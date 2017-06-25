@@ -9,7 +9,8 @@ const INIT_STATE = {
   board: [0, 0, 0, 0, 0, 0, 0, 0, 0,],
   isMoving: 'player',
   playerSymbol: 'x',
-  gameState: 'playing'
+  winLoss: 'none',
+  gameState: 'playing',
 };
 
 const game = (state = INIT_STATE, action) => {
@@ -21,12 +22,8 @@ const game = (state = INIT_STATE, action) => {
         playerSymbol: action.payload.side,
       };
     case PLAYER_MOVE:
-      if (state.board[action.payload - 1] === 0) {
-        const newBoard = [
-          ...state.board.slice(0, action.payload - 1),
-          state.playerSymbol,
-          ...state.board.slice(action.payload)
-        ];
+      if (state.board[action.payload - 1] === 0 && state.isMoving === 'player') {
+        const newBoard = [...state.board.slice(0, action.payload - 1), state.playerSymbol, ...state.board.slice(action.payload)];
 
         drawInCell(action.payload, state.playerSymbol);
 
@@ -34,7 +31,8 @@ const game = (state = INIT_STATE, action) => {
           drawWinCells(newBoard, state.playerSymbol);
           return {
               ...state,
-              gameState: 'won',
+              isMoving: '',
+              winLoss: 'won',
           };
         } else {
           return {
@@ -62,7 +60,9 @@ const game = (state = INIT_STATE, action) => {
         drawWinCells(newBoard, cpuSymbol);
         return {
             ...state,
-            gameState: 'lost',
+            board: newBoard,
+            isMoving: '',
+            winLoss: 'lost',
         };
       } else {
         return {
