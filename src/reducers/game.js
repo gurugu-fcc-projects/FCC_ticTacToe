@@ -7,13 +7,9 @@ import {
 
 const INIT_STATE = {
   board: [0, 0, 0, 0, 0, 0, 0, 0, 0,],
-  tmpBoard: [
-    'x', 0, 'o',
-    'x', 0, 'o',
-    0, 0, 0,
-  ],
   isMoving: 'player',
   playerSymbol: 'x',
+  gameState: 'playing'
 };
 
 const game = (state = INIT_STATE, action) => {
@@ -36,7 +32,10 @@ const game = (state = INIT_STATE, action) => {
 
         if (isWinning(newBoard, state.playerSymbol)) {
           drawWinCells(newBoard, state.playerSymbol);
-          return state;
+          return {
+              ...state,
+              gameState: 'won',
+          };
         } else {
           return {
             ...state,
@@ -61,7 +60,10 @@ const game = (state = INIT_STATE, action) => {
 
       if (isWinning(newBoard, cpuSymbol)) {
         drawWinCells(newBoard, cpuSymbol);
-        return state;
+        return {
+            ...state,
+            gameState: 'lost',
+        };
       } else {
         return {
           ...state,
