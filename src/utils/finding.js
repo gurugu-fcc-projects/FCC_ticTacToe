@@ -1,4 +1,3 @@
-import * as fromDrawing from './drawing';
 
 const getCoordinates = (evt, canvasName) => {
   const canvas = document.querySelector(canvasName);

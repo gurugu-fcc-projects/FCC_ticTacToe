@@ -1,5 +1,5 @@
 import { findCellCenter } from './finding';
-import { whichCombination, winningCells } from './game';
+import { winningCells } from './game';
 
 export const drawBoard = () => {
   const canvas = document.querySelector('.game-board');
@@ -62,16 +62,16 @@ const drawCircle = (coordinates, color = 'black') => {
   cx.stroke();
 };
 
-const drawCrossLine = (coordinates) => {
-  const canvas = document.querySelector('.game-board');
-  const cx = canvas.getContext('2d');
-
-  cx.strokeStyle = 'red';
-  cx.beginPath();
-  cx.moveTo(coordinates.start.x, coordinates.start.y);
-  cx.lineTo(coordinates.end.x, coordinates.end.y);
-  cx.stroke();
-};
+// const drawCrossLine = (coordinates) => {
+//   const canvas = document.querySelector('.game-board');
+//   const cx = canvas.getContext('2d');
+//
+//   cx.strokeStyle = 'red';
+//   cx.beginPath();
+//   cx.moveTo(coordinates.start.x, coordinates.start.y);
+//   cx.lineTo(coordinates.end.x, coordinates.end.y);
+//   cx.stroke();
+// };
 
 export const drawInCell = (cell, symbol, color) => {
   symbol === 'x'

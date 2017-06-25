@@ -47,18 +47,17 @@ const game = (state = INIT_STATE, action) => {
       }
       return state;
     case CPU_MOVE:
-      const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x',
-            bestCell = returnBestCell(state.board, cpuSymbol),
-            newBoard = [
-              ...state.board.slice(0, bestCell - 1),
-              cpuSymbol,
-              ...state.board.slice(bestCell)];
+      const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x';
+      let bestCell, newBoard;
 
       if (action.payload) {
-        drawInCell(Math.floor(Math.random() * (10 - 1)) + 1, cpuSymbol);
+        bestCell = Math.floor(Math.random() * (10 - 1)) + 1;
       } else {
-        drawInCell(bestCell, cpuSymbol);
+        bestCell = returnBestCell(state.board, cpuSymbol);
       }
+
+      newBoard = [...state.board.slice(0, bestCell - 1), cpuSymbol, ...state.board.slice(bestCell)];
+      drawInCell(bestCell, cpuSymbol);
 
       if (isWinning(newBoard, cpuSymbol)) {
         drawWinCells(newBoard, cpuSymbol);
