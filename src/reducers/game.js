@@ -16,6 +16,9 @@ const INIT_STATE = {
   playerSymbol: 'x',
   winLoss: 'none',
   gameOn: true,
+  scoreWin: 0,
+  scoreLoss: 0,
+  scoreDraw: 0,
 };
 
 const game = (state = INIT_STATE, action) => {
@@ -39,6 +42,7 @@ const game = (state = INIT_STATE, action) => {
               ...state,
               isMoving: '',
               winLoss: 'win',
+              scoreWin: state.scoreWin + 1,
           };
         } else {
           return {
@@ -70,6 +74,7 @@ const game = (state = INIT_STATE, action) => {
               board: newBoard,
               isMoving: '',
               winLoss: 'loss',
+              scoreLoss: state.scoreLoss + 1,
           };
         } else if (newBoard.indexOf(0) !== -1) {
           return {
@@ -82,12 +87,14 @@ const game = (state = INIT_STATE, action) => {
           ...state,
           isMoving: '',
           winLoss: 'draw',
+          scoreDraw: state.scoreDraw + 1,
         }
       }
       return {
         ...state,
         isMoving: '',
         winLoss: 'draw',
+        scoreDraw: state.scoreDraw + 1,
       };
     case GAME_OVER:
       return {

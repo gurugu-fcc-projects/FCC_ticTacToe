@@ -27,7 +27,13 @@ class Game extends Component{
   }
 
   render() {
-    const { playerMove, gameOn } = this.props;
+    const {
+      playerMove,
+      gameOn,
+      scoreWin,
+      scoreLoss,
+      scoreDraw,
+    } = this.props;
 
     if (!gameOn) {
       return <Redirect to='/end' />
@@ -37,18 +43,32 @@ class Game extends Component{
       <div className="outer-shell">
         <div className="game">
           <div className="game-score">
+            <div className="score-win">
+              <h4>Player</h4>
+              {scoreWin}
+            </div>
+            <div className="score-draw">
+              <h4>Draw</h4>
+              {scoreDraw}
+            </div>
+            <div className="score-loss">
+              <h4>Computer</h4>
+              {scoreLoss}
+            </div>
+          </div>
+          {/* <div className="game-score">
             <div className="game-score-title">Player</div>
             <div className="game-score-player">0</div>
-          </div>
+          </div> */}
           <canvas
             onClick={playerMove}
             className="game-board"
             height="300px"
             width="300px"></canvas>
-          <div className="game-score">
+          {/* <div className="game-score">
             <div className="game-score-title">CPU</div>
             <div className="game-score-cpu">0</div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
@@ -59,6 +79,9 @@ const mapStateToProps = (state) => ({
   isMoving: state.game.isMoving,
   winLoss: state.game.winLoss,
   gameOn: state.game.gameOn,
+  scoreWin: state.game.scoreWin,
+  scoreLoss: state.game.scoreLoss,
+  scoreDraw: state.game.scoreDraw,
 });
 
 Game = connect(
