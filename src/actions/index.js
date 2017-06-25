@@ -28,3 +28,9 @@ export const cpuMove = (firstMove) => {
     payload: firstMove,
   };
 };
+
+export const gameOver = () => {
+  return {
+    type: types.GAME_OVER,
+  };
+};

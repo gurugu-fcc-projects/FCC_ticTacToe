@@ -1,4 +1,9 @@
-import { CHOOSE_SIDE, PLAYER_MOVE, CPU_MOVE } from '../actions/types';
+import {
+  CHOOSE_SIDE,
+  PLAYER_MOVE,
+  CPU_MOVE,
+  GAME_OVER,
+} from '../actions/types';
 import { drawInCell, drawWinCells } from '../utils/drawing';
 import {
   isWinning,
@@ -10,7 +15,7 @@ const INIT_STATE = {
   isMoving: 'player',
   playerSymbol: 'x',
   winLoss: 'none',
-  gameState: 'playing',
+  gameOn: true,
 };
 
 const game = (state = INIT_STATE, action) => {
@@ -71,6 +76,11 @@ const game = (state = INIT_STATE, action) => {
           isMoving: 'player',
         };
       }
+    case GAME_OVER:
+      return {
+        ...state,
+        gameOn: false,
+      };
     default:
       return state;
   }

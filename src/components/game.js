@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {  Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { drawBoard } from '../utils/drawing';
 import * as actions from '../actions';
@@ -22,14 +22,15 @@ class Game extends Component{
     if (this.props.winLoss !== 'none') {
       setTimeout(() => {
         console.log('BOOM!');
+        this.props.gameOver();
       }, 2000);
     }
   }
 
   render() {
-    const { playerMove, gameState } = this.props;
+    const { playerMove, gameOn } = this.props;
 
-    if (gameState !== 'playing') {
+    if (!gameOn) {
       return <Redirect to='/end' />
     }
 
@@ -58,7 +59,7 @@ class Game extends Component{
 const mapStateToProps = (state) => ({
   isMoving: state.game.isMoving,
   winLoss: state.game.winLoss,
-  gameState: state.game.gameState,
+  gameOn: state.game.gameOn,
   // playerScore: state.player.score,
   // cpuScore: state.cpu.score,
 });
