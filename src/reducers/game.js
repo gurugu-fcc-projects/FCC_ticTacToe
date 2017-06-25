@@ -27,6 +27,7 @@ const game = (state = INIT_STATE, action) => {
         playerSymbol: action.payload.side,
       };
     case PLAYER_MOVE:
+
       if (state.board[action.payload - 1] === 0 && state.isMoving === 'player') {
         const newBoard = [...state.board.slice(0, action.payload - 1), state.playerSymbol, ...state.board.slice(action.payload)];
 
@@ -49,33 +50,45 @@ const game = (state = INIT_STATE, action) => {
       }
       return state;
     case CPU_MOVE:
-      const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x';
-      let bestCell, newBoard;
+      if (state.board.indexOf(0) !== -1) {
+        const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x';
+        let bestCell, newBoard;
 
-      if (action.payload) {
-        bestCell = Math.floor(Math.random() * (10 - 1)) + 1;
-      } else {
-        bestCell = returnBestCell(state.board, cpuSymbol);
-      }
+        if (action.payload) {
+          bestCell = Math.floor(Math.random() * (10 - 1)) + 1;
+        } else {
+          bestCell = returnBestCell(state.board, cpuSymbol);
+        }
 
-      newBoard = [...state.board.slice(0, bestCell - 1), cpuSymbol, ...state.board.slice(bestCell)];
-      drawInCell(bestCell, cpuSymbol);
+        newBoard = [...state.board.slice(0, bestCell - 1), cpuSymbol, ...state.board.slice(bestCell)];
+        drawInCell(bestCell, cpuSymbol);
 
-      if (isWinning(newBoard, cpuSymbol)) {
-        drawWinCells(newBoard, cpuSymbol);
-        return {
+        if (isWinning(newBoard, cpuSymbol)) {
+          drawWinCells(newBoard, cpuSymbol);
+          return {
+              ...state,
+              board: newBoard,
+              isMoving: '',
+              winLoss: 'loss',
+          };
+        } else if (newBoard.indexOf(0) !== -1) {
+          return {
             ...state,
             board: newBoard,
-            isMoving: '',
-            winLoss: 'loss',
-        };
-      } else {
+            isMoving: 'player',
+          };
+        }
         return {
           ...state,
-          board: newBoard,
-          isMoving: 'player',
-        };
+          isMoving: '',
+          winLoss: 'draw',
+        }
       }
+      return {
+        ...state,
+        isMoving: '',
+        winLoss: 'draw',
+      };
     case GAME_OVER:
       return {
         ...state,

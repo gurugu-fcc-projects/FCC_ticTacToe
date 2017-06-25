@@ -6,7 +6,9 @@ let End = ({ winLoss }) => (
     <h1>
       {winLoss === 'win'
         ? 'Congratulations! You won!'
-        : 'Sorry, but you lost!'}
+        : winLoss === 'loss'
+          ? 'Sorry, but you lost!'
+          : 'It\'s a draw, try again!'}
     </h1>
     <div>Another game</div>
     <div>Change side</div>

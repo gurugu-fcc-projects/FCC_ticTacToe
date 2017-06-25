@@ -21,7 +21,6 @@ class Game extends Component{
     }
     if (this.props.winLoss !== 'none') {
       setTimeout(() => {
-        console.log('BOOM!');
         this.props.gameOver();
       }, 2000);
     }
