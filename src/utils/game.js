@@ -77,6 +77,10 @@ export const findMoveRatings = (board, playerAi) => {
     if (cell === 0) {
       const newBoard = makeMove(board, index, playerAi);
 
+      if (Math.random() >= 0.8) {
+        return 10;
+      }
+
       return isWinning(newBoard, playerAi)
         ? 10000
         : winningMove(newBoard, playerHuman)
