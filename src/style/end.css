@@ -1,29 +1,21 @@
+.game-over h1 {
+  margin-bottom: 30px;
+}
+
 .game-over-link {
   display: inline-block;
   position: relative;
   width: 130px;
   padding: 5px;
-  border: 1px solid #000;
-  margin: 30px 10px;
+  margin: 0 5px;
   font-size: 1.2em;
-  color: #000;
   text-decoration: none;
   text-align: center;
   transition: background-color .2s, color .2s;
 }
 
-/*.game-over-link span {
-  position: absolute;
-  bottom: -7px;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: #000;
-  transition: transform 0.2s;
-}*/
-
-.game-over-link:hover,
+/*.game-over-link:hover,
 .game-over-link:active {
   background-color: #000;
   color: #fff;
-}
+}*/

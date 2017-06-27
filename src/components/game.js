@@ -10,7 +10,7 @@ import '../style/game.css';
 class Game extends Component{
 
   componentDidMount() {
-    drawBoard();
+    drawBoard(this.props.playerSymbol);
     if (this.props.isMoving === 'cpu') {
       this.props.cpuMove(true);
     }
@@ -30,18 +30,23 @@ class Game extends Component{
   render() {
     const {
       playerMove,
+      playerSymbol,
       gameOn,
       scoreWin,
       scoreLoss,
       scoreDraw,
     } = this.props;
 
+    const gameStyle = playerSymbol === 'x'
+      ? {backgroundColor: '#000', color: '#fff'}
+      : {backgroundColor: '#fff', color: '#000'};
+
     if (!gameOn) {
       return <Redirect to='/end' />
     }
 
     return (
-      <div className="outer-shell">
+      <div className="outer-shell" style={gameStyle}>
         <div className="game">
           <div className="game-score">
             <div className="score-win">
@@ -70,6 +75,7 @@ class Game extends Component{
 
 Game.propTypes = {
   isMoving: PropTypes.string,
+  playerSymbol: PropTypes.string,
   winLoss: PropTypes.string,
   gameOn: PropTypes.bool,
   scoreWin: PropTypes.number,
@@ -82,6 +88,7 @@ Game.propTypes = {
 
 const mapStateToProps = (state) => ({
   isMoving: state.game.isMoving,
+  playerSymbol: state.game.playerSymbol,
   winLoss: state.game.winLoss,
   gameOn: state.game.gameOn,
   scoreWin: state.game.scoreWin,

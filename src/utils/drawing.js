@@ -1,10 +1,11 @@
 import { findCellCenter } from './finding';
 import { winningCells } from './game';
 
-export const drawBoard = () => {
+export const drawBoard = (playerSymbol = 'x') => {
   const canvas = document.querySelector('.game-board');
   const cx = canvas.getContext('2d');
 
+  cx.strokeStyle = playerSymbol === 'x' ? 'white' : 'black';
   cx.beginPath();
   cx.moveTo(100, 0);
   cx.lineTo(100, 300);

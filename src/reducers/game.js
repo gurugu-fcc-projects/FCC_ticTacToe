@@ -34,11 +34,11 @@ const game = (state = INIT_STATE, action) => {
         playerSymbol: action.payload.side,
       };
     case PLAYER_MOVE:
-
       if (state.board[action.payload - 1] === 0 && state.isMoving === 'player') {
         const newBoard = [...state.board.slice(0, action.payload - 1), state.playerSymbol, ...state.board.slice(action.payload)];
+        const mainColor = state.playerSymbol === 'x' ? 'white' : 'black';
 
-        drawInCell(action.payload, state.playerSymbol);
+        drawInCell(action.payload, state.playerSymbol, mainColor);
 
         if (isWinning(newBoard, state.playerSymbol)) {
           drawWinCells(newBoard, state.playerSymbol);
@@ -60,6 +60,7 @@ const game = (state = INIT_STATE, action) => {
     case CPU_MOVE:
       if (state.board.indexOf(0) !== -1) {
         const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x';
+        const mainColor = state.playerSymbol === 'x' ? 'white' : 'black';
         let bestCell, newBoard;
 
         if (action.payload) {
@@ -69,7 +70,7 @@ const game = (state = INIT_STATE, action) => {
         }
 
         newBoard = [...state.board.slice(0, bestCell - 1), cpuSymbol, ...state.board.slice(bestCell)];
-        drawInCell(bestCell, cpuSymbol);
+        drawInCell(bestCell, cpuSymbol, mainColor);
 
         if (isWinning(newBoard, cpuSymbol)) {
           drawWinCells(newBoard, cpuSymbol);
