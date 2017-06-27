@@ -1,11 +1,13 @@
 {
   "name": "FCC_ticTacToe",
+  "homepage": "https://GuRuGuMaWaRu.github.io/FCC_ticTacToe",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "1.0.2"
   },
   "dependencies": {
+    "gh-pages": "^1.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -18,6 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
