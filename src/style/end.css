@@ -2,23 +2,28 @@
   display: inline-block;
   position: relative;
   width: 130px;
-  margin: 0 15px;
+  padding: 5px;
+  border: 1px solid #000;
+  margin: 30px 10px;
   font-size: 1.2em;
   color: #000;
   text-decoration: none;
+  text-align: center;
+  transition: background-color .2s, color .2s;
 }
 
-.game-over-link span {
+/*.game-over-link span {
   position: absolute;
-  bottom: -12px;
-  left: 25px;
+  bottom: -7px;
+  left: 0;
   height: 2px;
-  width: 80px;
+  width: 100%;
   background-color: #000;
   transition: transform 0.2s;
-}
+}*/
 
-.game-over-link:hover span {
-  /*width: 100%;*/
-  transform: scaleX(1.6);
+.game-over-link:hover,
+.game-over-link:active {
+  background-color: #000;
+  color: #fff;
 }

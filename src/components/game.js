@@ -23,7 +23,7 @@ class Game extends Component{
     if (this.props.winLoss !== 'none') {
       setTimeout(() => {
         this.props.gameOver();
-      }, 2000);
+      }, 1000);
     }
   }
 
@@ -71,7 +71,7 @@ class Game extends Component{
 Game.propTypes = {
   isMoving: PropTypes.string,
   winLoss: PropTypes.string,
-  gameOn: PropTypes.boolean,
+  gameOn: PropTypes.bool,
   scoreWin: PropTypes.number,
   scoreLoss: PropTypes.number,
   scoreDraw: PropTypes.number,
