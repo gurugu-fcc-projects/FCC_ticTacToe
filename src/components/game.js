@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { drawBoard } from '../utils/drawing';
 import * as actions from '../actions';
@@ -65,6 +66,18 @@ class Game extends Component{
       </div>
     );
   }
+}
+
+Game.propTypes = {
+  isMoving: PropTypes.string,
+  winLoss: PropTypes.string,
+  gameOn: PropTypes.boolean,
+  scoreWin: PropTypes.number,
+  scoreLoss: PropTypes.number,
+  scoreDraw: PropTypes.number,
+  playerMove: PropTypes.func,
+  cpuMove: PropTypes.func,
+  gameOver: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -76,9 +89,4 @@ const mapStateToProps = (state) => ({
   scoreDraw: state.game.scoreDraw,
 });
 
-Game = connect(
-  mapStateToProps,
-  actions
-)(Game);
-
-export default Game;
+export default connect(mapStateToProps, actions)(Game);

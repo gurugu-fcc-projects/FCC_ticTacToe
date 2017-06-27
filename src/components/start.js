@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { drawSelectionButtons } from '../utils/drawing';
 import * as actions from '../actions';
@@ -36,9 +37,8 @@ class Start extends Component {
   }
 }
 
-Start = connect(
-  null,
-  actions
-)(Start);
+Start.propTypes = {
+  chooseSide: PropTypes.func,
+};
 
-export default Start;
+export default connect(null, actions)(Start);
