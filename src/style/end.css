@@ -1,7 +1,8 @@
 .game-over-link {
   display: inline-block;
   position: relative;
-  margin: 0 20px;
+  width: 130px;
+  margin: 0 15px;
   font-size: 1.2em;
   color: #000;
   text-decoration: none;
@@ -9,14 +10,15 @@
 
 .game-over-link span {
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 1px;
-  width: 0;
+  bottom: -12px;
+  left: 25px;
+  height: 2px;
+  width: 80px;
   background-color: #000;
-  transition: width 0.2s;
+  transition: transform 0.2s;
 }
 
 .game-over-link:hover span {
-  width: 100%;
+  /*width: 100%;*/
+  transform: scaleX(1.6);
 }
