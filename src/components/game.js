@@ -51,15 +51,15 @@ class Game extends Component{
           <div className="game-score">
             <div className="score-win">
               <h4>Player</h4>
-              {scoreWin}
+              <span>{scoreWin}</span>
             </div>
             <div className="score-draw">
               <h4>Draw</h4>
-              {scoreDraw}
+              <span>{scoreDraw}</span>
             </div>
             <div className="score-loss">
               <h4>Computer</h4>
-              {scoreLoss}
+              <span>{scoreLoss}</span>
             </div>
           </div>
           <canvas
@@ -87,13 +87,13 @@ Game.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isMoving: state.game.isMoving,
-  playerSymbol: state.game.playerSymbol,
-  winLoss: state.game.winLoss,
-  gameOn: state.game.gameOn,
-  scoreWin: state.game.scoreWin,
-  scoreLoss: state.game.scoreLoss,
-  scoreDraw: state.game.scoreDraw,
+  isMoving: state.isMoving,
+  playerSymbol: state.playerSymbol,
+  winLoss: state.winLoss,
+  gameOn: state.gameOn,
+  scoreWin: state.scoreWin,
+  scoreLoss: state.scoreLoss,
+  scoreDraw: state.scoreDraw,
 });
 
 export default connect(mapStateToProps, actions)(Game);

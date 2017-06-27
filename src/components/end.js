@@ -49,8 +49,8 @@ End.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  playerSymbol: state.game.playerSymbol,
-  winLoss: state.game.winLoss,
+  playerSymbol: state.playerSymbol,
+  winLoss: state.winLoss,
 });
 
 export default connect(mapStateToProps, actions)(End);

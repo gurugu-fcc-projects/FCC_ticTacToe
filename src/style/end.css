@@ -13,9 +13,3 @@
   text-align: center;
   transition: background-color .2s, color .2s;
 }
-
-/*.game-over-link:hover,
-.game-over-link:active {
-  background-color: #000;
-  color: #fff;
-}*/
