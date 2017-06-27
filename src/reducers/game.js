@@ -3,8 +3,12 @@ import {
   PLAYER_MOVE,
   CPU_MOVE,
   GAME_OVER,
+  PREPARE_NEXT_GAME,
 } from '../actions/types';
-import { drawInCell, drawWinCells } from '../utils/drawing';
+import {
+  drawInCell,
+  drawWinCells,
+} from '../utils/drawing';
 import {
   isWinning,
   returnBestCell,
@@ -99,7 +103,16 @@ const game = (state = INIT_STATE, action) => {
     case GAME_OVER:
       return {
         ...state,
+        winLoss: 'none',
         gameOn: false,
+      };
+    case PREPARE_NEXT_GAME:
+      return {
+        ...state,
+        board: [0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        isMoving: state.playerSymbol === 'x' ? 'player' : 'cpu',
+        winLoss: 'none',
+        gameOn: true,
       };
     default:
       return state;

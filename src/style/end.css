@@ -1,0 +1,18 @@
+.game-over-link {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 1.2em;
+  color: #000;
+  text-decoration: none;
+}
+
+.game-over-link:hover {
+  animation-duration: .3s;
+  animation-name: buttonAnimation;
+}
+
+@keyframes buttonAnimation {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}

@@ -56,19 +56,11 @@ class Game extends Component{
               {scoreLoss}
             </div>
           </div>
-          {/* <div className="game-score">
-            <div className="game-score-title">Player</div>
-            <div className="game-score-player">0</div>
-          </div> */}
           <canvas
             onClick={playerMove}
             className="game-board"
             height="300px"
             width="300px"></canvas>
-          {/* <div className="game-score">
-            <div className="game-score-title">CPU</div>
-            <div className="game-score-cpu">0</div>
-          </div> */}
         </div>
       </div>
     );
