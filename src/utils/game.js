@@ -47,7 +47,7 @@ export const winningMove = (board, player) => {
     }
     return false;
   });
-}
+};
 
 export const calculateMoveRatings = (board, playerAi, playerCurrent) => {
   const playerNext = playerCurrent === 'x' ? 'o' : 'x';
@@ -70,15 +70,16 @@ export const calculateMoveRatings = (board, playerAi, playerCurrent) => {
   }, 0);
 };
 
-export const findMoveRatings = (board, playerAi) => {
+export const findMoveRatings = (board, playerAi, testCase) => {
   const playerHuman = playerAi === 'x' ? 'o' : 'x';
 
   return board.map((cell, index) => {
     if (cell === 0) {
       const newBoard = makeMove(board, index, playerAi);
 
-      if (Math.random() >= 0.8) {
-        return 10;
+      if (!testCase && Math.random() > 0.9) {
+        console.log('sucker punch!');
+        return 33;
       }
 
       return isWinning(newBoard, playerAi)
@@ -87,12 +88,12 @@ export const findMoveRatings = (board, playerAi) => {
           ? -10000
           : calculateMoveRatings(newBoard, playerAi, playerHuman);
     }
-    return -10000;
+    return -100000;
   });
 };
 
 export const findBestCell = (ratings) => {
-  let testRating = -10000;
+  let testRating = -100000;
 
   return ratings.reduce((best, rating, index) => {
     if (rating > testRating) {
@@ -106,7 +107,8 @@ export const findBestCell = (ratings) => {
 };
 
 export const returnBestCell = (board, playerAi) => {
-  const moveRatings = findMoveRatings(board, playerAi);
-
+  const moveRatings = findMoveRatings(board, playerAi, false);
+  // console.log('moveRatings:',moveRatings);
+  // console.log('best cell:', findBestCell(moveRatings))
   return findBestCell(moveRatings);
 };

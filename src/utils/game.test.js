@@ -139,30 +139,35 @@ describe('calculateMoveRatings', () => {
 });
 
 describe('findMoveRatings', () => {
-  it('returns -10000 for all taken cells', () => {
+  it('returns -100000 for all taken cells', () => {
     const inputBoard = ['x', 'o', 'o', 'o', 'o', 'x', 'x', 'x', 'o'];
-    const outputBoard = [-10000, -10000, -10000, -10000, -10000, -10000, -10000, -10000, -10000];
+    const outputBoard = [-100000, -100000, -100000, -100000, -100000, -100000, -100000, -100000, -100000];
 
-    expect(fromGame.findMoveRatings(inputBoard, 'x')).toEqual(outputBoard);
+    expect(fromGame.findMoveRatings(inputBoard, 'x', true)).toEqual(outputBoard);
   });
 
   it('returns 10000 for all empty cells that will bring victory', () => {
     const inputBoard = ['x', 'x', 0, 0, 'o', 'x', 'x', 'x', 0];
-    const outputBoard = [-10000, -10000, 10000, 10000, -10000, -10000, -10000, -10000, 10000];
+    const outputBoard = [-100000, -100000, 10000, 10000, -100000, -100000, -100000, -100000, 10000];
 
-    expect(fromGame.findMoveRatings(inputBoard, 'x')).toEqual(outputBoard);
+    expect(fromGame.findMoveRatings(inputBoard, 'x', true)).toEqual(outputBoard);
   });
 });
 
 describe('findBestCell', () => {
   it('returns index of a cell with the highest rating', () => {
-    const inputRatings1 = [10, 20, 0, 0, -40, 100, 30, -10000, 150];
-    const inputRatings2 = [-10, -20, 0, -1000, -40, -100, -30, -10000, -150];
-    const inputRatings3 = [-10, -20, -90, -1000, -40, -100, -30, -10000, -150];
+    const inputRatings1 = [10, 20, 0, 0, -40, 100, 30, -100000, 150];
+    const inputRatings2 = [-10, -20, 0, -1000, -40, -100, -30, -100000, -150];
+    const inputRatings3 = [-10, -20, -90, -1000, -40, -100, -30, -100000, -150];
 
     expect(fromGame.findBestCell(inputRatings1)).toEqual(9);
     expect(fromGame.findBestCell(inputRatings2)).toEqual(3);
     expect(fromGame.findBestCell(inputRatings3)).toEqual(1);
+  });
+  it('returns index of the only empty cell', () => {
+    const inputRatings = [-100000, -100000, -100000, -100000, -100000, -100000, -100000, -10000, -100000];
+
+    expect(fromGame.findBestCell(inputRatings)).toEqual(8);
   });
 });
 

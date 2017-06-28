@@ -33,7 +33,7 @@ const game = (state = INIT_STATE, action) => {
         isMoving: action.payload.isMoving ? 'player' : 'cpu',
         playerSymbol: action.payload.side,
       };
-    case PLAYER_MOVE:
+    case PLAYER_MOVE: {
       if (state.board[action.payload - 1] === 0 && state.isMoving === 'player') {
         const newBoard = [...state.board.slice(0, action.payload - 1), state.playerSymbol, ...state.board.slice(action.payload)];
         const mainColor = state.playerSymbol === 'x' ? 'white' : 'black';
@@ -57,7 +57,8 @@ const game = (state = INIT_STATE, action) => {
         }
       }
       return state;
-    case CPU_MOVE:
+    }
+    case CPU_MOVE: {
       if (state.board.indexOf(0) !== -1) {
         const cpuSymbol = state.playerSymbol === 'x' ? 'o' : 'x';
         const mainColor = state.playerSymbol === 'x' ? 'white' : 'black';
@@ -101,6 +102,7 @@ const game = (state = INIT_STATE, action) => {
         winLoss: 'draw',
         scoreDraw: state.scoreDraw + 1,
       };
+    }
     case GAME_OVER:
       return {
         ...state,
