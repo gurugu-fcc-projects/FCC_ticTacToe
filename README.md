@@ -13,7 +13,7 @@ This time I quite easily had an idea to make two separate color schemes for each
 ## Links
 
 - [ ] this project at codepen: [https://codepen.io/GuRuGu/full/OgOvyL/](https://codepen.io/GuRuGu/full/OgOvyL/)
-- [ ] this project at gh-pages: [https://gurugumawaru.github.io/FCC_ticTacToe/#/](https://gurugumawaru.github.io/FCC_ticTacToe/#/)
+- [ ] this project at gh-pages: [https://gurugu-fcc-projects.github.io/FCC_ticTacToe/#/](https://gurugu-fcc-projects.github.io/FCC_ticTacToe/#/)
 - [ ] freecodecamp challenge: [https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/build-a-tic-tac-toe-game](https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/build-a-tic-tac-toe-game)
 
 ## Video Walkthrough
